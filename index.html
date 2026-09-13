@@ -3,399 +3,290 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Propuesta Comercial | R&H Hernández Asociados</title>
+    <title>Planes y Presupuestos de Publicidad - Despacho Jurídico R&H</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --bg-dark: #0a0d12;
-            --bg-card: #121721;
-            --bg-card-hover: #171e2b;
-            --gold-light: #fef08a;
-            --gold-primary: #d4af37;
-            --gold-dark: #85581A;
-            --text-white: #f8fafc;
-            --text-gray: #94a3b8;
-            --border-dark: #1e293b;
-            --border-gold: rgba(212, 175, 55, 0.4);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
-
+        /* Estilos Base Originales */
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-white);
-            line-height: 1.6;
-            padding: 30px 15px;
-            display: flex;
-            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0f19;
+            color: #f3f4f6;
+            overflow-x: hidden;
         }
-
-        .container {
-            width: 100%;
-            max-width: 1150px;
+        .font-montserrat {
+            font-family: 'Montserrat', sans-serif;
         }
-
-        /* Encabezado Principal */
-        header {
-            text-align: center;
-            margin-bottom: 35px;
+        .gold-gradient {
+            background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa7c11 100%);
         }
-
-        .gold-text-gradient {
-            background: linear-gradient(135deg, #FFF099 0%, #D4AF37 50%, #996515 100%);
+        .gold-text {
+            background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa7c11 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        
+        /* --- NUEVAS ANIMACIONES PROFESIONALES --- */
+        /* Animación de aparición al hacer scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Retrasos en cadena para las tarjetas */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        .delay-400 { transition-delay: 400ms; }
 
-        header h1 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+        /* Efecto de elevación al pasar el mouse/tocar */
+        .card-hover {
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7);
         }
 
-        header p {
-            color: var(--text-gray);
-            font-size: 1.05rem;
-            margin-top: 6px;
+        /* Brillo dinámico continuo para la tarjeta destacada */
+        .glow-pulse {
+            animation: pulse-glow 3s infinite alternate;
         }
-
-        /* Banner Inversión Inicial */
-        .banner-initial {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(18, 23, 33, 0.9) 100%);
-            border: 1px solid var(--gold-primary);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
-            border-radius: 16px;
-            padding: 22px 25px;
-            margin-bottom: 40px;
-            text-align: center;
-        }
-
-        .banner-initial h2 {
-            font-size: 1.25rem;
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .banner-initial p {
-            color: #cbd5e1;
-            font-size: 0.95rem;
-        }
-
-        /* Grid de Tarjetas */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 22px;
-            margin-bottom: 45px;
-        }
-
-        .card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-dark);
-            border-radius: 16px;
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(212, 175, 55, 0.3);
-            background-color: var(--bg-card-hover);
-        }
-
-        /* Tarjeta Destacada (Medio) */
-        .card.featured {
-            border: 2px solid var(--gold-primary);
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.22);
-            background: linear-gradient(180deg, rgba(212, 175, 55, 0.05) 0%, var(--bg-card) 100%);
-        }
-
-        .badge-recommended {
-            position: absolute;
-            top: -14px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, #FFE066 0%, #D4AF37 100%);
-            color: #000;
-            font-size: 0.72rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-            padding: 4px 14px;
-            border-radius: 20px;
-            text-transform: uppercase;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-        }
-
-        .card-header h3 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .card-header .subtitle {
-            color: var(--text-gray);
-            font-size: 0.82rem;
-            min-height: 38px;
-        }
-
-        .price-container {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 12px 14px;
-            margin: 18px 0;
-        }
-
-        .price-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.9rem;
-        }
-
-        .price-row:not(:last-child) {
-            margin-bottom: 6px;
-            padding-bottom: 6px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .price-label {
-            color: var(--text-gray);
-        }
-
-        .price-value {
-            font-weight: 700;
-            color: var(--gold-light);
-        }
-
-        .features-list {
-            list-style: none;
-            font-size: 0.88rem;
-        }
-
-        .features-list li {
-            position: relative;
-            padding-left: 22px;
-            margin-bottom: 10px;
-            color: #e2e8f0;
-        }
-
-        .features-list li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--gold-primary);
-            font-weight: bold;
-        }
-
-        /* Tabla Comparativa */
-        .table-container {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-dark);
-            border-radius: 16px;
-            padding: 25px;
-            overflow-x: auto;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .table-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 18px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-            font-size: 0.9rem;
-            min-width: 650px;
-        }
-
-        th {
-            background-color: #1a2230;
-            color: var(--gold-light);
-            font-weight: 700;
-            padding: 14px 16px;
-            border-bottom: 2px solid var(--border-dark);
-        }
-
-        td {
-            padding: 14px 16px;
-            border-bottom: 1px solid var(--border-dark);
-            color: #cbd5e1;
-        }
-
-        tr:hover td {
-            background-color: rgba(255, 255, 255, 0.02);
-        }
-
-        .highlight-row td {
-            background-color: rgba(212, 175, 55, 0.04);
-        }
-
-        footer {
-            text-align: center;
-            color: var(--text-gray);
-            font-size: 0.82rem;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border-dark);
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.1); }
+            100% { box-shadow: 0 0 35px rgba(212, 175, 55, 0.4); }
         }
     </style>
 </head>
-<body>
+<body class="min-h-screen py-10 px-4 sm:px-8 max-w-7xl mx-auto">
 
-<div class="container">
-    <header>
-        <h1 class="gold-text-gradient">R&H HERNÁNDEZ ASOCIADOS</h1>
-        <p>Propuesta Comercial y Planes de Inversión en Publicidad Digital</p>
+    <!-- Header / Branding -->
+    <header class="text-center mb-12 border-b border-slate-800 pb-8 reveal active">
+        <div class="inline-flex items-center justify-center space-x-3 mb-4">
+            <div class="w-12 h-12 rounded-full border-2 border-[#d4af37] flex items-center justify-center bg-slate-900 transition-transform duration-500 hover:rotate-12">
+                <i class="fa-solid me-0 fa-scale-balanced text-xl text-[#d4af37]"></i>
+            </div>
+            <div class="text-left">
+                <h1 class="text-2xl font-bold tracking-wider font-montserrat text-white uppercase">R&H ABOGADOS</h1>
+                <p class="text-xs text-slate-400 tracking-widest uppercase">Hernández & Asociados</p>
+            </div>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold font-montserrat gold-text mt-2">
+            Propuesta de Alcance y Presupuestos de Publicidad
+        </h2>
+        <p class="text-slate-400 max-w-2xl mx-auto mt-2 text-sm sm:text-base">
+            Estrategia de contenidos y pauta publicitaria en Meta Ads (Facebook e Instagram) diseñada para la atracción de clientes en Querétaro.
+        </p>
     </header>
 
-    <!-- Banner Inversión Inicial -->
-    <div class="banner-initial">
-        <h2>💡 <span class="gold-text-gradient">Inversión Inicial Única: $1,000 MXN</span></h2>
-        <p>Destinada a herramientas, configuración técnica del sitio web y arranque del proyecto. Posteriormente, solo se cubre la inversión del plan seleccionado.</p>
-    </div>
-
-    <!-- Grid de Tarjetas -->
-    <div class="cards-grid">
-        <!-- Comodín -->
-        <div class="card">
-            <div class="card-header">
-                <h3 class="gold-text-gradient">Comodín</h3>
-                <p class="subtitle">Mantenimiento y flujo esencial continuo</p>
-            </div>
-            <div class="price-container">
-                <div class="price-row"><span class="price-label">Quincenal:</span><span class="price-value">$750 MXN</span></div>
-                <div class="price-row"><span class="price-label">Mensual:</span><span class="price-value">$1,500 MXN</span></div>
-            </div>
-            <ul class="features-list">
-                <li>2 Publicaciones de Imagen / sem (8 al mes)</li>
-                <li>1 Video corto cada 2 semanas (2 al mes)</li>
-                <li><b>75 días acumulados</b> de anuncios activos</li>
-                <li>2 Anuncios activos simultáneos a $25 MXN/día</li>
-            </ul>
+    <!-- Banner de Inversión Inicial -->
+    <section class="reveal delay-100 mb-10 bg-gradient-to-r from-amber-950/40 via-slate-900 to-amber-950/40 border border-[#d4af37]/40 rounded-2xl p-6 shadow-lg text-center max-w-4xl mx-auto transition duration-300 hover:border-[#d4af37]/80">
+        <div class="inline-flex items-center justify-center space-x-2 bg-[#d4af37]/10 text-[#d4af37] px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3 border border-[#d4af37]/30">
+            <i class="fa-solid fa-rocket animate-bounce"></i>
+            <span>Arranque del Proyecto</span>
         </div>
+        <h3 class="text-2xl font-bold font-montserrat text-white mb-2">
+            Inversión Inicial Única: <span class="gold-text">$1,000 MXN</span>
+        </h3>
+        <p class="text-slate-300 text-sm max-w-2xl mx-auto leading-relaxed">
+            Este pago único inicial cubre la adquisición de <strong class="text-white">herramientas digitales, configuración técnica de cuentas, diseño de assets y comienzo de trabajo</strong>. Posterior a este pago de inicio, únicamente se mantiene la inversión quincenal/mensual del plan elegido.
+        </p>
+    </section>
 
-        <!-- Bajo -->
-        <div class="card">
-            <div class="card-header">
-                <h3 class="gold-text-gradient">Bajo</h3>
-                <p class="subtitle">Captación inicial y presencia constante</p>
+    <!-- Cards Grid -->
+    <section class="mb-16">
+        <h3 class="reveal delay-200 text-xl font-bold font-montserrat text-white mb-6 flex items-center">
+            <i class="fa-solid fa-layer-group text-[#d4af37] mr-3"></i> Resumen de Niveles de Inversión
+        </h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <!-- Comodín -->
+            <div class="reveal delay-100 card-hover bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between cursor-default">
+                <div>
+                    <span class="inline-block px-3 py-1 bg-slate-800 text-slate-300 text-xs font-semibold rounded-full uppercase tracking-wider mb-4">Presupuesto Mínimo</span>
+                    <h4 class="text-2xl font-bold font-montserrat text-white mb-2">Comodín</h4>
+                    <p class="text-xs text-slate-400 mb-6">Mantenimiento esencial para mantener el flujo constante sin detener anuncios.</p>
+                    
+                    <div class="mb-6 p-4 bg-slate-950/60 rounded-xl border border-slate-800/80">
+                        <div class="text-xs text-slate-400">Inversión Pauta</div>
+                        <div class="text-2xl font-bold text-white">$1,500 <span class="text-xs font-normal text-slate-400">MXN / mes</span></div>
+                        <div class="text-xs text-[#d4af37] mt-1">$750 MXN Quincenal</div>
+                    </div>
+
+                    <ul class="space-y-3 text-sm text-slate-300 mb-6">
+                        <li class="flex items-start"><i class="fa-solid fa-image text-slate-500 mt-1 mr-2 text-xs"></i><span><b>2 publicaciones</b> de imagen / sem</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-video text-slate-500 mt-1 mr-2 text-xs"></i><span><b>1 video</b> cada 2 semanas</span></li>
+                    </ul>
+                </div>
+                <div class="pt-4 border-t border-slate-800 text-xs text-slate-400">
+                    <strong class="text-slate-200">Cobertura:</strong> 75 días acumulados de anuncio (2 anuncios simultáneos).
+                </div>
             </div>
-            <div class="price-container">
-                <div class="price-row"><span class="price-label">Quincenal:</span><span class="price-value">$1,250 MXN</span></div>
-                <div class="price-row"><span class="price-label">Mensual:</span><span class="price-value">$2,500 MXN</span></div>
+
+            <!-- Bajo -->
+            <div class="reveal delay-200 card-hover bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between cursor-default">
+                <div>
+                    <span class="inline-block px-3 py-1 bg-slate-800 text-slate-300 text-xs font-semibold rounded-full uppercase tracking-wider mb-4">Captación Inicial</span>
+                    <h4 class="text-2xl font-bold font-montserrat text-white mb-2">Bajo</h4>
+                    <p class="text-xs text-slate-400 mb-6">Presupuesto accesible con mayor rotación de contenidos y presencia constante.</p>
+                    
+                    <div class="mb-6 p-4 bg-slate-950/60 rounded-xl border border-slate-800/80">
+                        <div class="text-xs text-slate-400">Inversión Pauta</div>
+                        <div class="text-2xl font-bold text-white">$2,500 <span class="text-xs font-normal text-slate-400">MXN / mes</span></div>
+                        <div class="text-xs text-[#d4af37] mt-1">$1,250 MXN Quincenal</div>
+                    </div>
+
+                    <ul class="space-y-3 text-sm text-slate-300 mb-6">
+                        <li class="flex items-start"><i class="fa-solid fa-image text-slate-500 mt-1 mr-2 text-xs"></i><span><b>3 publicaciones</b> de imagen / sem</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-video text-slate-500 mt-1 mr-2 text-xs"></i><span><b>1 video</b> cada semana</span></li>
+                    </ul>
+                </div>
+                <div class="pt-4 border-t border-slate-800 text-xs text-slate-400">
+                    <strong class="text-slate-200">Cobertura:</strong> 125 días acumulados (4 anuncios activos en simultáneo).
+                </div>
             </div>
-            <ul class="features-list">
-                <li>3 Publicaciones de Imagen / sem (12 al mes)</li>
-                <li>1 Video corto cada semana (4 al mes)</li>
-                <li><b>125 días acumulados</b> de anuncios activos</li>
-                <li>4 Anuncios simultáneos a $20 MXN/día</li>
-            </ul>
+
+            <!-- Medio (Destacado) -->
+            <div class="reveal delay-300 glow-pulse bg-slate-900 border-2 border-[#d4af37] rounded-2xl p-6 flex flex-col justify-between relative transform md:-translate-y-2 transition duration-500 hover:scale-105 cursor-default">
+                <div class="absolute -top-3.5 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-amber-600 to-yellow-500 text-slate-950 text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider shadow-lg">
+                    Recomendado
+                </div>
+                <div>
+                    <span class="inline-block px-3 py-1 bg-amber-500/10 text-[#d4af37] text-xs font-semibold rounded-full uppercase tracking-wider mb-4">Crecimiento Sostenible</span>
+                    <h4 class="text-2xl font-bold font-montserrat text-white mb-2">Medio</h4>
+                    <p class="text-xs text-slate-300 mb-6">Balance ideal entre alcance geográfico, variedad de videos y captación activa.</p>
+                    
+                    <div class="mb-6 p-4 bg-slate-950/80 rounded-xl border border-amber-500/30">
+                        <div class="text-xs text-slate-400">Inversión Pauta</div>
+                        <div class="text-2xl font-bold gold-text">$3,500 <span class="text-xs font-normal text-slate-400">MXN / mes</span></div>
+                        <div class="text-xs text-[#d4af37] mt-1">$1,750 MXN Quincenal</div>
+                    </div>
+
+                    <ul class="space-y-3 text-sm text-slate-200 mb-6">
+                        <li class="flex items-start"><i class="fa-solid fa-image text-[#d4af37] mt-1 mr-2 text-xs"></i><span><b>4 publicaciones</b> de imagen / sem</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-video text-[#d4af37] mt-1 mr-2 text-xs"></i><span><b>1 a 2 videos</b> por semana</span></li>
+                    </ul>
+                </div>
+                <div class="pt-4 border-t border-slate-800 text-xs text-slate-300">
+                    <strong class="text-[#d4af37]">Cobertura:</strong> 175 días acumulados (5 a 6 anuncios en simultáneo).
+                </div>
+            </div>
+
+            <!-- Alto -->
+            <div class="reveal delay-400 card-hover bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between cursor-default">
+                <div>
+                    <span class="inline-block px-3 py-1 bg-slate-800 text-slate-300 text-xs font-semibold rounded-full uppercase tracking-wider mb-4">Aceleración Total</span>
+                    <h4 class="text-2xl font-bold font-montserrat text-white mb-2">Alto</h4>
+                    <p class="text-xs text-slate-400 mb-6">Máxima cobertura de anuncios con pruebas A/B y presencia diaria en redes.</p>
+                    
+                    <div class="mb-6 p-4 bg-slate-950/60 rounded-xl border border-slate-800/80">
+                        <div class="text-xs text-slate-400">Inversión Pauta</div>
+                        <div class="text-2xl font-bold text-white">$4,500 <span class="text-xs font-normal text-slate-400">MXN / mes</span></div>
+                        <div class="text-xs text-[#d4af37] mt-1">$2,250 MXN Quincenal</div>
+                    </div>
+
+                    <ul class="space-y-3 text-sm text-slate-300 mb-6">
+                        <li class="flex items-start"><i class="fa-solid fa-image text-slate-500 mt-1 mr-2 text-xs"></i><span><b>Publicación diaria</b> (24 al mes)</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-video text-slate-500 mt-1 mr-2 text-xs"></i><span><b>2 a 3 videos</b> por semana</span></li>
+                    </ul>
+                </div>
+                <div class="pt-4 border-t border-slate-800 text-xs text-slate-400">
+                    <strong class="text-slate-200">Cobertura:</strong> 225 días acumulados (7 a 8 anuncios activos).
+                </div>
+            </div>
+
         </div>
+    </section>
 
-        <!-- Medio (Recomendado) -->
-        <div class="card featured">
-            <div class="badge-recommended">RECOMENDADO</div>
-            <div class="card-header">
-                <h3 class="gold-text-gradient">Medio</h3>
-                <p class="subtitle">Crecimiento sólido y posicionamiento local</p>
-            </div>
-            <div class="price-container">
-                <div class="price-row"><span class="price-label">Quincenal:</span><span class="price-value">$1,750 MXN</span></div>
-                <div class="price-row"><span class="price-label">Mensual:</span><span class="price-value">$3,500 MXN</span></div>
-            </div>
-            <ul class="features-list">
-                <li>4 Publicaciones de Imagen / sem (16 al mes)</li>
-                <li>1 a 2 Videos por semana (6 al mes)</li>
-                <li><b>175 días acumulados</b> de anuncios activos</li>
-                <li>5 a 6 Anuncios activos simultáneamente</li>
-            </ul>
+    <!-- Table View -->
+    <section class="reveal bg-slate-900/90 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl overflow-hidden mb-12">
+        <h3 class="text-xl font-bold font-montserrat text-white mb-6 flex items-center">
+            <i class="fa-solid fa-table-cells text-[#d4af37] mr-3"></i> Tabla Comparativa Detallada
+        </h3>
+
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse min-w-[700px]">
+                <thead>
+                    <tr class="border-b border-slate-800 text-xs uppercase text-slate-400 tracking-wider">
+                        <th class="py-4 px-4 font-semibold">Nivel</th>
+                        <th class="py-4 px-4 font-semibold">Inversión Pauta</th>
+                        <th class="py-4 px-4 font-semibold">Publicaciones</th>
+                        <th class="py-4 px-4 font-semibold">Videos (Reels)</th>
+                        <th class="py-4 px-4 font-semibold">Cobertura de Anuncios</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-800 text-sm">
+                    <tr class="hover:bg-slate-800/40 transition duration-300 cursor-default">
+                        <td class="py-4 px-4 font-bold text-slate-200"><span class="w-2.5 h-2.5 rounded-full bg-slate-500 inline-block mr-2"></span> Comodín</td>
+                        <td class="py-4 px-4 text-slate-300 font-semibold">$750 / $1,500 <span class="text-xs">MXN</span></td>
+                        <td class="py-4 px-4 text-slate-300">2 a la semana</td>
+                        <td class="py-4 px-4 text-slate-300">1 cada 2 semanas</td>
+                        <td class="py-4 px-4 text-slate-300">75 días acumulados (2 anuncios)</td>
+                    </tr>
+                    <tr class="hover:bg-slate-800/40 transition duration-300 cursor-default">
+                        <td class="py-4 px-4 font-bold text-slate-200"><span class="w-2.5 h-2.5 rounded-full bg-blue-400 inline-block mr-2"></span> Bajo</td>
+                        <td class="py-4 px-4 text-slate-300 font-semibold">$1,250 / $2,500 <span class="text-xs">MXN</span></td>
+                        <td class="py-4 px-4 text-slate-300">3 a la semana</td>
+                        <td class="py-4 px-4 text-slate-300">1 a la semana</td>
+                        <td class="py-4 px-4 text-slate-300">125 días acumulados (4 anuncios)</td>
+                    </tr>
+                    <tr class="bg-amber-500/5 hover:bg-amber-500/10 transition duration-300 cursor-default">
+                        <td class="py-4 px-4 font-bold gold-text"><span class="w-2.5 h-2.5 rounded-full bg-[#d4af37] inline-block mr-2"></span> Medio</td>
+                        <td class="py-4 px-4 text-[#d4af37] font-semibold">$1,750 / $3,500 <span class="text-xs">MXN</span></td>
+                        <td class="py-4 px-4 text-slate-200">4 a la semana</td>
+                        <td class="py-4 px-4 text-slate-200">1 a 2 a la semana</td>
+                        <td class="py-4 px-4 text-slate-200">175 días acumulados (5 a 6 anuncios)</td>
+                    </tr>
+                    <tr class="hover:bg-slate-800/40 transition duration-300 cursor-default">
+                        <td class="py-4 px-4 font-bold text-white"><span class="w-2.5 h-2.5 rounded-full bg-emerald-400 inline-block mr-2"></span> Alto</td>
+                        <td class="py-4 px-4 text-slate-300 font-semibold">$2,250 / $4,500 <span class="text-xs">MXN</span></td>
+                        <td class="py-4 px-4 text-slate-300">Diaria</td>
+                        <td class="py-4 px-4 text-slate-300">2 a 3 a la semana</td>
+                        <td class="py-4 px-4 text-slate-300">225 días acumulados (7 a 8 anuncios)</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
+    </section>
 
-        <!-- Alto -->
-        <div class="card">
-            <div class="card-header">
-                <h3 class="gold-text-gradient">Alto</h3>
-                <p class="subtitle">Aceleración y máxima cobertura en Querétaro</p>
-            </div>
-            <div class="price-container">
-                <div class="price-row"><span class="price-label">Quincenal:</span><span class="price-value">$2,250 MXN</span></div>
-                <div class="price-row"><span class="price-label">Mensual:</span><span class="price-value">$4,500 MXN</span></div>
-            </div>
-            <ul class="features-list">
-                <li>Publicación diaria (24 al mes)</li>
-                <li>2 a 3 Videos por semana (8 a 10 al mes)</li>
-                <li><b>225 días acumulados</b> de anuncios activos</li>
-                <li>7 a 8 Anuncios con pruebas A/B de diseño</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Tabla Comparativa -->
-    <div class="table-container">
-        <h3 class="table-title gold-text-gradient">Resumen Comparativo de Cobertura</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Nivel</th>
-                    <th>Inversión (Quincenal / Mensual)</th>
-                    <th>Publicaciones</th>
-                    <th>Videos (Reels)</th>
-                    <th>Cobertura de Anuncios</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><b>Comodín</b></td>
-                    <td>$750 / $1,500 MXN</td>
-                    <td>2 por semana (8/mes)</td>
-                    <td>1 cada 2 semanas (2/mes)</td>
-                    <td>75 días acum. (2 anuncios simultáneos)</td>
-                </tr>
-                <tr>
-                    <td><b>Bajo</b></td>
-                    <td>$1,250 / $2,500 MXN</td>
-                    <td>3 por semana (12/mes)</td>
-                    <td>1 por semana (4/mes)</td>
-                    <td>125 días acum. (4 anuncios simultáneos)</td>
-                </tr>
-                <tr class="highlight-row">
-                    <td><b class="gold-text-gradient">Medio</b></td>
-                    <td><b>$1,750 / $3,500 MXN</b></td>
-                    <td>4 por semana (16/mes)</td>
-                    <td>1-2 por semana (6/mes)</td>
-                    <td>175 días acum. (5-6 anuncios simultáneos)</td>
-                </tr>
-                <tr>
-                    <td><b>Alto</b></td>
-                    <td>$2,250 / $4,500 MXN</td>
-                    <td>Diaria (24/mes)</td>
-                    <td>2-3 por semana (8-10/mes)</td>
-                    <td>225 días acum. (7-8 anuncios simultáneos)</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <footer>
-        <p>© 2026 Despacho Jurídico R&H Hernández Asociados | Querétaro, Qro.</p>
+    <!-- Footer -->
+    <footer class="reveal text-center text-xs text-slate-500 space-y-2 border-t border-slate-800 pt-6">
+        <p>* Requiere una inversión inicial única de $1,000 MXN por concepto de herramientas y setup de arranque.</p>
+        <p>* Los montos mensuales mostrados corresponden al presupuesto pagado directamente a Meta Ads.</p>
+        <p>Despacho Jurídico R&H Hernández Asociados &bull; Santiago de Querétaro, Qro.</p>
     </footer>
-</div>
 
+    <!-- SCRIPT DE ANIMACIONES (Intersection Observer) -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        // Dejar de observar una vez que ya apareció
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach((el) => {
+                observer.observe(el);
+            });
+        });
+    </script>
 </body>
 </html>
