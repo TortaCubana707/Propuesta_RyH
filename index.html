@@ -3,175 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Propuesta Comercial y Presupuestos | R&H Hernández Asociados</title>
+    <title>Propuesta Comercial | R&H Hernández Asociados</title>
     <style>
         :root {
-            --bg-main: #0d1117;
-            --bg-card: #161b22;
-            --bg-table: #21262d;
-            --gold: #d4af37;
-            --gold-light: #f3e5ab;
-            --text-main: #f0f6fc;
-            --text-muted: #8b949e;
-            --border: #30363d;
+            --bg-dark: #0a0d12;
+            --bg-card: #121721;
+            --bg-card-hover: #171e2b;
+            --gold-light: #fef08a;
+            --gold-primary: #d4af37;
+            --gold-dark: #85581A;
+            --text-white: #f8fafc;
+            --text-gray: #94a3b8;
+            --border-dark: #1e293b;
+            --border-gold: rgba(212, 175, 55, 0.4);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         body {
-            background-color: var(--bg-main);
-            color: var(--text-main);
-            line-height: 1.5;
-            padding: 20px 10px;
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            line-height: 1.6;
+            padding: 30px 15px;
+            display: flex;
+            justify-content: center;
         }
 
         .container {
-            max-width: 1100px;
-            margin: 0 auto;
+            width: 100%;
+            max-width: 1150px;
         }
 
+        /* Encabezado Principal */
         header {
             text-align: center;
-            padding: 20px 0 30px;
-            border-bottom: 1px solid var(--border);
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
 
-        .logo-title {
-            color: var(--gold);
-            font-size: 2rem;
+        .gold-text-gradient {
+            background: linear-gradient(135deg, #FFF099 0%, #D4AF37 50%, #996515 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
             font-weight: 800;
             letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
-        .subtitle {
-            color: var(--text-muted);
-            font-size: 1rem;
-            margin-top: 5px;
+        header p {
+            color: var(--text-gray);
+            font-size: 1.05rem;
+            margin-top: 6px;
         }
 
-        /* Banner de Inversión Inicial */
+        /* Banner Inversión Inicial */
         .banner-initial {
-            background: linear-gradient(135deg, #272008 0%, #161b22 100%);
-            border: 2px solid var(--gold);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 30px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(18, 23, 33, 0.9) 100%);
+            border: 1px solid var(--gold-primary);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+            border-radius: 16px;
+            padding: 22px 25px;
+            margin-bottom: 40px;
             text-align: center;
         }
 
         .banner-initial h2 {
-            color: var(--gold-light);
-            font-size: 1.3rem;
-            margin-bottom: 8px;
+            font-size: 1.25rem;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         .banner-initial p {
-            color: var(--text-main);
+            color: #cbd5e1;
             font-size: 0.95rem;
         }
 
         /* Grid de Tarjetas */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 22px;
+            margin-bottom: 45px;
         }
 
         .card {
             background-color: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 20px;
+            border: 1px solid var(--border-dark);
+            border-radius: 16px;
+            padding: 24px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             position: relative;
+            transition: all 0.3s ease;
         }
 
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(212, 175, 55, 0.3);
+            background-color: var(--bg-card-hover);
+        }
+
+        /* Tarjeta Destacada (Medio) */
         .card.featured {
-            border: 2px solid var(--gold);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+            border: 2px solid var(--gold-primary);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.22);
+            background: linear-gradient(180deg, rgba(212, 175, 55, 0.05) 0%, var(--bg-card) 100%);
         }
 
-        .badge {
+        .badge-recommended {
             position: absolute;
-            top: -12px;
-            right: 15px;
-            background-color: var(--gold);
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #FFE066 0%, #D4AF37 100%);
             color: #000;
-            font-size: 0.75rem;
-            font-weight: bold;
-            padding: 3px 10px;
-            border-radius: 10px;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            padding: 4px 14px;
+            border-radius: 20px;
             text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
 
-        .card-title {
-            color: var(--gold);
-            font-size: 1.3rem;
-            margin-bottom: 10px;
+        .card-header h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 4px;
         }
 
-        .price-box {
-            margin: 15px 0;
-            padding: 10px;
-            background-color: rgba(255, 255, 255, 0.03);
-            border-radius: 8px;
+        .card-header .subtitle {
+            color: var(--text-gray);
+            font-size: 0.82rem;
+            min-height: 38px;
         }
 
-        .price-item {
+        .price-container {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 12px 14px;
+            margin: 18px 0;
+        }
+
+        .price-row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 5px;
+            align-items: center;
             font-size: 0.9rem;
         }
 
-        .price-val {
-            font-weight: bold;
+        .price-row:not(:last-child) {
+            margin-bottom: 6px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .price-label {
+            color: var(--text-gray);
+        }
+
+        .price-value {
+            font-weight: 700;
             color: var(--gold-light);
         }
 
-        .card-features {
+        .features-list {
             list-style: none;
-            margin-top: 15px;
             font-size: 0.88rem;
         }
 
-        .card-features li {
-            margin-bottom: 8px;
-            padding-left: 18px;
+        .features-list li {
             position: relative;
-            color: var(--text-main);
+            padding-left: 22px;
+            margin-bottom: 10px;
+            color: #e2e8f0;
         }
 
-        .card-features li::before {
+        .features-list li::before {
             content: "✓";
             position: absolute;
             left: 0;
-            color: var(--gold);
+            color: var(--gold-primary);
+            font-weight: bold;
         }
 
         /* Tabla Comparativa */
-        .table-section {
+        .table-container {
             background-color: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 20px;
+            border: 1px solid var(--border-dark);
+            border-radius: 16px;
+            padding: 25px;
             overflow-x: auto;
-            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
         .table-title {
-            color: var(--gold);
-            font-size: 1.2rem;
-            margin-bottom: 15px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 18px;
         }
 
         table {
@@ -179,31 +221,38 @@
             border-collapse: collapse;
             text-align: left;
             font-size: 0.9rem;
-            min-width: 600px;
-        }
-
-        th, td {
-            padding: 12px 15px;
-            border-bottom: 1px solid var(--border);
+            min-width: 650px;
         }
 
         th {
-            background-color: var(--bg-table);
+            background-color: #1a2230;
             color: var(--gold-light);
-            font-weight: 600;
+            font-weight: 700;
+            padding: 14px 16px;
+            border-bottom: 2px solid var(--border-dark);
         }
 
-        tr:hover {
+        td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border-dark);
+            color: #cbd5e1;
+        }
+
+        tr:hover td {
             background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        .highlight-row td {
+            background-color: rgba(212, 175, 55, 0.04);
         }
 
         footer {
             text-align: center;
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            margin-top: 30px;
+            color: var(--text-gray);
+            font-size: 0.82rem;
+            margin-top: 40px;
             padding-top: 20px;
-            border-top: 1px solid var(--border);
+            border-top: 1px solid var(--border-dark);
         }
     </style>
 </head>
@@ -211,95 +260,95 @@
 
 <div class="container">
     <header>
-        <div class="logo-title">R&H HERNÁNDEZ ASOCIADOS</div>
-        <div class="subtitle">Propuesta Comercial y Planes de Inversión en Publicidad</div>
+        <h1 class="gold-text-gradient">R&H HERNÁNDEZ ASOCIADOS</h1>
+        <p>Propuesta Comercial y Planes de Inversión en Publicidad Digital</p>
     </header>
 
-    <!-- Inversión Inicial -->
+    <!-- Banner Inversión Inicial -->
     <div class="banner-initial">
-        <h2>💡 Inversión Inicial Única: $1,000 MXN</h2>
-        <p>Destinada al pago de herramientas, configuración técnica inicial del proyecto y arranque de campañas. Posteriormente, solo se cubre la inversión del plan seleccionado.</p>
+        <h2>💡 <span class="gold-text-gradient">Inversión Inicial Única: $1,000 MXN</span></h2>
+        <p>Destinada a herramientas, configuración técnica del sitio web y arranque del proyecto. Posteriormente, solo se cubre la inversión del plan seleccionado.</p>
     </div>
 
-    <!-- Tarjetas de Planes -->
+    <!-- Grid de Tarjetas -->
     <div class="cards-grid">
         <!-- Comodín -->
         <div class="card">
-            <div>
-                <div class="card-title">Comodín</div>
-                <p style="color: var(--text-muted); font-size: 0.85rem;">Mantenimiento y flujo esencial</p>
-                <div class="price-box">
-                    <div class="price-item"><span>Quincenal:</span><span class="price-val">$750 MXN</span></div>
-                    <div class="price-item"><span>Mensual:</span><span class="price-val">$1,500 MXN</span></div>
-                </div>
-                <ul class="card-features">
-                    <li>2 Publicaciones de Imagen por semana (8 al mes)</li>
-                    <li>1 Video corto cada 2 semanas (2 al mes)</li>
-                    <li>75 días acumulados de anuncios activos</li>
-                    <li>2 Anuncios activos a $25 MXN/día</li>
-                </ul>
+            <div class="card-header">
+                <h3 class="gold-text-gradient">Comodín</h3>
+                <p class="subtitle">Mantenimiento y flujo esencial continuo</p>
             </div>
+            <div class="price-container">
+                <div class="price-row"><span class="price-label">Quincenal:</span><span class="price-value">$750 MXN</span></div>
+                <div class="price-row"><span class="price-label">Mensual:</span><span class="price-value">$1,500 MXN</span></div>
+            </div>
+            <ul class="features-list">
+                <li>2 Publicaciones de Imagen / sem (8 al mes)</li>
+                <li>1 Video corto cada 2 semanas (2 al mes)</li>
+                <li><b>75 días acumulados</b> de anuncios activos</li>
+                <li>2 Anuncios activos simultáneos a $25 MXN/día</li>
+            </ul>
         </div>
 
         <!-- Bajo -->
         <div class="card">
-            <div>
-                <div class="card-title">Bajo</div>
-                <p style="color: var(--text-muted); font-size: 0.85rem;">Captación inicial constante</p>
-                <div class="price-box">
-                    <div class="price-item"><span>Quincenal:</span><span class="price-val">$1,250 MXN</span></div>
-                    <div class="price-item"><span>Mensual:</span><span class="price-val">$2,500 MXN</span></div>
-                </div>
-                <ul class="card-features">
-                    <li>3 Publicaciones de Imagen por semana (12 al mes)</li>
-                    <li>1 Video corto cada semana (4 al mes)</li>
-                    <li>125 días acumulados de anuncios activos</li>
-                    <li>4 Anuncios simultáneos a $20 MXN/día</li>
-                </ul>
+            <div class="card-header">
+                <h3 class="gold-text-gradient">Bajo</h3>
+                <p class="subtitle">Captación inicial y presencia constante</p>
             </div>
+            <div class="price-container">
+                <div class="price-row"><span class="price-label">Quincenal:</span><span class="price-value">$1,250 MXN</span></div>
+                <div class="price-row"><span class="price-label">Mensual:</span><span class="price-value">$2,500 MXN</span></div>
+            </div>
+            <ul class="features-list">
+                <li>3 Publicaciones de Imagen / sem (12 al mes)</li>
+                <li>1 Video corto cada semana (4 al mes)</li>
+                <li><b>125 días acumulados</b> de anuncios activos</li>
+                <li>4 Anuncios simultáneos a $20 MXN/día</li>
+            </ul>
         </div>
 
         <!-- Medio (Recomendado) -->
         <div class="card featured">
-            <div class="badge">Recomendado</div>
-            <div>
-                <div class="card-title">Medio</div>
-                <p style="color: var(--text-muted); font-size: 0.85rem;">Crecimiento sólido y posicionamiento</p>
-                <div class="price-box">
-                    <div class="price-item"><span>Quincenal:</span><span class="price-val">$1,750 MXN</span></div>
-                    <div class="price-item"><span>Mensual:</span><span class="price-val">$3,500 MXN</span></div>
-                </div>
-                <ul class="card-features">
-                    <li>4 Publicaciones de Imagen por semana (16 al mes)</li>
-                    <li>1 a 2 Videos por semana (6 al mes)</li>
-                    <li>175 días acumulados de anuncios activos</li>
-                    <li>5 a 6 Anuncios activos simultáneamente</li>
-                </ul>
+            <div class="badge-recommended">RECOMENDADO</div>
+            <div class="card-header">
+                <h3 class="gold-text-gradient">Medio</h3>
+                <p class="subtitle">Crecimiento sólido y posicionamiento local</p>
             </div>
+            <div class="price-container">
+                <div class="price-row"><span class="price-label">Quincenal:</span><span class="price-value">$1,750 MXN</span></div>
+                <div class="price-row"><span class="price-label">Mensual:</span><span class="price-value">$3,500 MXN</span></div>
+            </div>
+            <ul class="features-list">
+                <li>4 Publicaciones de Imagen / sem (16 al mes)</li>
+                <li>1 a 2 Videos por semana (6 al mes)</li>
+                <li><b>175 días acumulados</b> de anuncios activos</li>
+                <li>5 a 6 Anuncios activos simultáneamente</li>
+            </ul>
         </div>
 
         <!-- Alto -->
         <div class="card">
-            <div>
-                <div class="card-title">Alto</div>
-                <p style="color: var(--text-muted); font-size: 0.85rem;">Aceleración y máxima cobertura</p>
-                <div class="price-box">
-                    <div class="price-item"><span>Quincenal:</span><span class="price-val">$2,250 MXN</span></div>
-                    <div class="price-item"><span>Mensual:</span><span class="price-val">$4,500 MXN</span></div>
-                </div>
-                <ul class="card-features">
-                    <li>Publicación diaria (24 al mes)</li>
-                    <li>2 a 3 Videos por semana (8 a 10 al mes)</li>
-                    <li>225 días acumulados de anuncios activos</li>
-                    <li>7 a 8 Anuncios con pruebas A/B de diseño</li>
-                </ul>
+            <div class="card-header">
+                <h3 class="gold-text-gradient">Alto</h3>
+                <p class="subtitle">Aceleración y máxima cobertura en Querétaro</p>
             </div>
+            <div class="price-container">
+                <div class="price-row"><span class="price-label">Quincenal:</span><span class="price-value">$2,250 MXN</span></div>
+                <div class="price-row"><span class="price-label">Mensual:</span><span class="price-value">$4,500 MXN</span></div>
+            </div>
+            <ul class="features-list">
+                <li>Publicación diaria (24 al mes)</li>
+                <li>2 a 3 Videos por semana (8 a 10 al mes)</li>
+                <li><b>225 días acumulados</b> de anuncios activos</li>
+                <li>7 a 8 Anuncios con pruebas A/B de diseño</li>
+            </ul>
         </div>
     </div>
 
-    <!-- Tabla Detallada -->
-    <div class="table-section">
-        <div class="table-title">Resumen Comparativo de Cobertura</div>
+    <!-- Tabla Comparativa -->
+    <div class="table-container">
+        <h3 class="table-title gold-text-gradient">Resumen Comparativo de Cobertura</h3>
         <table>
             <thead>
                 <tr>
@@ -312,28 +361,28 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><strong>Comodín</strong></td>
+                    <td><b>Comodín</b></td>
                     <td>$750 / $1,500 MXN</td>
                     <td>2 por semana (8/mes)</td>
                     <td>1 cada 2 semanas (2/mes)</td>
                     <td>75 días acum. (2 anuncios simultáneos)</td>
                 </tr>
                 <tr>
-                    <td><strong>Bajo</strong></td>
+                    <td><b>Bajo</b></td>
                     <td>$1,250 / $2,500 MXN</td>
                     <td>3 por semana (12/mes)</td>
                     <td>1 por semana (4/mes)</td>
                     <td>125 días acum. (4 anuncios simultáneos)</td>
                 </tr>
-                <tr>
-                    <td><strong style="color: var(--gold);">Medio</strong></td>
-                    <td>$1,750 / $3,500 MXN</td>
+                <tr class="highlight-row">
+                    <td><b class="gold-text-gradient">Medio</b></td>
+                    <td><b>$1,750 / $3,500 MXN</b></td>
                     <td>4 por semana (16/mes)</td>
                     <td>1-2 por semana (6/mes)</td>
                     <td>175 días acum. (5-6 anuncios simultáneos)</td>
                 </tr>
                 <tr>
-                    <td><strong>Alto</strong></td>
+                    <td><b>Alto</b></td>
                     <td>$2,250 / $4,500 MXN</td>
                     <td>Diaria (24/mes)</td>
                     <td>2-3 por semana (8-10/mes)</td>
